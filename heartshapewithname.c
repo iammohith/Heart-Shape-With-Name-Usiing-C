@@ -8,7 +8,8 @@ int main() {
 
     // Input: Get the name and size from the user
     printf("Enter your name: ");
-    gets(name);  // Get the name (unsafe, better to use fgets for larger programs)
+    fgets(name, sizeof(name), stdin);  // Use fgets to safely get the name
+    name[strcspn(name, "\n")] = '\0';  // Remove the newline character that fgets adds
     
     printf("Enter value of n: ");
     scanf("%d", &n);  // Get the value of 'n', which controls the size of the heart shape
